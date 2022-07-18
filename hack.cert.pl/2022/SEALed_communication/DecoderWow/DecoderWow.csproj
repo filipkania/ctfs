@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Research.SEALNet" Version="3.5.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\microsoft.research.sealnet\4.0.0\build\../runtimes/win10-x64/sealc.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\microsoft.research.sealnet\4.0.0\build\../runtimes/win10-x64/sealc.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\microsoft.research.sealnet\4.0.0\build\../runtimes/win10-x64/sealc.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\sealed\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Device.Portable">
+      <HintPath>..\..\sealed\System.Device.Portable.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

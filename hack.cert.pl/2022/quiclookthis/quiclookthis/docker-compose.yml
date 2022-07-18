@@ -1,0 +1,9 @@
+version: '2'
+
+services:
+  app:
+    build: .
+    environment:
+      - FLAG=ctf{here_real_flag}
+    ports:
+      - "18443:18443/udp"

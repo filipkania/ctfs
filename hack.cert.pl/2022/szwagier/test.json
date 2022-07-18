@@ -1,0 +1,7 @@
+{
+  "url": "https://somehost.eu.ngrok.io/test.yaml",
+  "urls": [{
+      "url": "https://somehost.eu.ngrok.io/test.yaml",
+      "name": "Foo"
+  }]
+}

