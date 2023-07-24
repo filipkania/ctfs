@@ -1,0 +1,806 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.4">
+  <RESOURCE type="results">
+    <INFO name="QUERY_STATUS" value="OK" />
+    <INFO name="QUERY_TIMESTAMP" value="2023-07-21T15:48:04.054" />
+    <INFO name="QUERY" value="select * from ivoa.obscore WHERE (INTERSECTS(CIRCLE('ICRS',1.0,1.0,1.0), s_region) = 1) AND science_observation='T' AND data_rights='hoooooo'" />
+    <TABLE>
+      <FIELD name="collections" datatype="char" arraysize="128*" xtype="adql:VARCHAR">
+        <DESCRIPTION>Indicates that there are external products</DESCRIPTION>
+      </FIELD>
+      <FIELD name="pi_userid" datatype="char" arraysize="256*" xtype="adql:VARCHAR" />
+      <FIELD name="o_ucd" datatype="char" arraysize="35" ucd="meta.ucd" utype="obscore:Char.ObservableAxis.ucd">
+        <DESCRIPTION>UCD describing the observable axis (pixel values)</DESCRIPTION>
+      </FIELD>
+      <FIELD name="obs_publisher_did" datatype="char" arraysize="33*" ucd="meta.ref.ivoid" utype="obscore:Curation.PublisherDID">
+        <DESCRIPTION>publisher dataset identifier</DESCRIPTION>
+      </FIELD>
+      <FIELD name="obs_collection" datatype="char" arraysize="4" ucd="meta.id" utype="obscore:DataID.Collection">
+        <DESCRIPTION>short name for the data collection</DESCRIPTION>
+      </FIELD>
+      <FIELD name="facility_name" datatype="char" arraysize="3" ucd="meta.id;instr.tel" utype="obscore:Provenance.ObsConfig.Facility.name">
+        <DESCRIPTION>telescope name</DESCRIPTION>
+      </FIELD>
+      <FIELD name="instrument_name" datatype="char" arraysize="4" ucd="meta.id;instr" utype="obscore:Provenance.ObsConfig.Instrument.name">
+        <DESCRIPTION>instrument name</DESCRIPTION>
+      </FIELD>
+      <FIELD name="obs_id" datatype="char" arraysize="64*" ucd="meta.id" utype="obscore:DataID.observationID">
+        <DESCRIPTION>internal dataset identifier</DESCRIPTION>
+      </FIELD>
+      <FIELD name="dataproduct_type" datatype="char" arraysize="5*" ucd="meta.code.class" utype="obscore:ObsDataset.dataProductType">
+        <DESCRIPTION>type of product</DESCRIPTION>
+      </FIELD>
+      <FIELD name="calib_level" datatype="int" ucd="meta.code;obs.calib" utype="obscore:ObsDataset.calibLevel">
+        <DESCRIPTION>calibration level (2 or 3). 2 if product_type = MOUS, 3 if product_type = GOUS</DESCRIPTION>
+      </FIELD>
+      <FIELD name="target_name" datatype="char" arraysize="256*" ucd="meta.id;src" utype="obscore:Target.Name">
+        <DESCRIPTION>name of intended target</DESCRIPTION>
+      </FIELD>
+      <FIELD name="s_ra" datatype="double" ucd="pos.eq.ra" unit="deg" utype="obscore:Char.SpatialAxis.Coverage.Location.Coord.Position2D.Value2.C1" xtype="adql:DOUBLE">
+        <DESCRIPTION>RA of central coordinates</DESCRIPTION>
+      </FIELD>
+      <FIELD name="s_dec" datatype="double" ucd="pos.eq.dec" unit="deg" utype="obscore:Char.SpatialAxis.Coverage.Location.Coord.Position2D.Value2.C2" xtype="adql:DOUBLE">
+        <DESCRIPTION>DEC of central coordinates</DESCRIPTION>
+      </FIELD>
+      <FIELD name="s_fov" datatype="double" ucd="phys.angSize;instr.fov" unit="deg" utype="obscore:Char.SpatialAxis.Coverage.Bounds.Extent.diameter" xtype="adql:DOUBLE">
+        <DESCRIPTION>size of the region covered (~diameter of minimum bounding circle)</DESCRIPTION>
+      </FIELD>
+      <FIELD name="s_region" datatype="char" arraysize="*" ucd="pos.outline;obs.field" utype="obscore:Char.SpatialAxis.Coverage.Support.Area" xtype="adql:REGION">
+        <DESCRIPTION>region bounded by observation</DESCRIPTION>
+      </FIELD>
+      <FIELD name="s_xel1" datatype="int" ucd="meta.number" utype="obscore:Char.SpatialAxis.numBins1" xtype="adql:BIGINT">
+        <DESCRIPTION>Number of elements along the first spatial axis</DESCRIPTION>
+      </FIELD>
+      <FIELD name="s_xel2" datatype="int" ucd="meta.number" utype="obscore:Char.SpatialAxis.numBins2" xtype="adql:BIGINT">
+        <DESCRIPTION>Number of elements along the second spatial axis</DESCRIPTION>
+      </FIELD>
+      <FIELD name="em_xel" datatype="int" ucd="meta.number" utype="obscore:Char.SpectralAxis.numBins" xtype="adql:BIGINT">
+        <DESCRIPTION>Number of elements along the spectral axis</DESCRIPTION>
+      </FIELD>
+      <FIELD name="t_xel" datatype="int" ucd="meta.number" utype="obscore:Char.TimeAxis.numBins" xtype="adql:BIGINT">
+        <DESCRIPTION>Number of elements along the time axis</DESCRIPTION>
+      </FIELD>
+      <FIELD name="pol_xel" datatype="int" ucd="meta.number" utype="obscore:Char.PolarizationAxis.numBins" xtype="adql:BIGINT">
+        <DESCRIPTION>Number of polarization samples</DESCRIPTION>
+      </FIELD>
+      <FIELD name="s_resolution" datatype="double" ucd="pos.angResolution" unit="arcsec" utype="obscore:Char.SpatialAxis.Resolution.refval.value" xtype="adql:DOUBLE">
+        <DESCRIPTION>typical spatial resolution</DESCRIPTION>
+      </FIELD>
+      <FIELD name="t_min" datatype="double" ucd="time.start;obs.exposure" unit="d" utype="obscore:Char.TimeAxis.Coverage.Bounds.Limits.StartTime" xtype="adql:DOUBLE">
+        <DESCRIPTION>start time of observation (MJD)</DESCRIPTION>
+      </FIELD>
+      <FIELD name="t_max" datatype="double" ucd="time.end;obs.exposure" unit="d" utype="obscore:Char.TimeAxis.Coverage.Bounds.Limits.StopTime" xtype="adql:DOUBLE">
+        <DESCRIPTION>end time of observation (MJD)</DESCRIPTION>
+      </FIELD>
+      <FIELD name="t_exptime" datatype="double" ucd="time.duration;obs.exposure" unit="s" utype="obscore:Char.TimeAxis.Coverage.Support.Extent" xtype="adql:DOUBLE">
+        <DESCRIPTION>exposure time of observation</DESCRIPTION>
+      </FIELD>
+      <FIELD name="t_resolution" datatype="double" ucd="time.resolution" unit="s" utype="obscore:Char.TimeAxis.Resolution.refval.value" xtype="adql:DOUBLE">
+        <DESCRIPTION>typical temporal resolution</DESCRIPTION>
+      </FIELD>
+      <FIELD name="em_min" datatype="double" ucd="em.wl;stat.min" unit="m" utype="obscore:Char.SpectralAxis.Coverage.Bounds.Limits.LoLimit" xtype="adql:DOUBLE">
+        <DESCRIPTION>start spectral coordinate value</DESCRIPTION>
+      </FIELD>
+      <FIELD name="em_max" datatype="double" ucd="em.wl;stat.max" unit="m" utype="obscore:Char.SpectralAxis.Coverage.Bounds.Limits.HiLimit" xtype="adql:DOUBLE">
+        <DESCRIPTION>stop spectral coordinate value</DESCRIPTION>
+      </FIELD>
+      <FIELD name="em_res_power" datatype="double" ucd="spect.resolution" utype="obscore:Char.SpectralAxis.Resolution.ResolPower.refval" xtype="adql:DOUBLE">
+        <DESCRIPTION>typical spectral resolution</DESCRIPTION>
+      </FIELD>
+      <FIELD name="pol_states" datatype="char" arraysize="64*" ucd="meta.code;phys.polarization" utype="obscore:Char.PolarizationAxis.stateList">
+        <DESCRIPTION>polarization states present in the data</DESCRIPTION>
+      </FIELD>
+      <FIELD name="access_url" datatype="char" arraysize="72*" ucd="meta.ref.url" utype="obscore:Access.Reference">
+        <DESCRIPTION>URL to download the data</DESCRIPTION>
+      </FIELD>
+      <FIELD name="access_format" datatype="char" arraysize="9" ucd="meta.code.mime" utype="obscore:Access.Format">
+        <DESCRIPTION>Content format of the data</DESCRIPTION>
+      </FIELD>
+      <FIELD name="access_estsize" datatype="int" ucd="phys.size;meta.file" unit="kbyte" utype="obscore:Access.Size" xtype="adql:BIGINT">
+        <DESCRIPTION>Estimated size of datasets in kilobytes</DESCRIPTION>
+      </FIELD>
+      <FIELD name="proposal_id" datatype="char" arraysize="64*" ucd="meta.id;obs.proposal" utype="obscore:Provenance.Proposal.identifier" xtype="adql:VARCHAR">
+        <DESCRIPTION>Identifier of proposal to which NO observation belongs.</DESCRIPTION>
+      </FIELD>
+      <FIELD name="data_rights" datatype="char" arraysize="11" ucd="meta.code" utype="obscore:Curation.Rights" xtype="adql:VARCHAR">
+        <DESCRIPTION>Access to data.</DESCRIPTION>
+      </FIELD>
+      <FIELD name="gal_longitude" datatype="double" ucd="pos.galactic.lon" unit="deg" xtype="adql:DOUBLE">
+        <DESCRIPTION>Galactic longitude of the observation for RA/Dec. Estimated using PyEphem and RA/Dec.</DESCRIPTION>
+      </FIELD>
+      <FIELD name="gal_latitude" datatype="double" ucd="pos.galactic.lat" unit="deg" xtype="adql:DOUBLE">
+        <DESCRIPTION>Galactic latitude of the observation for RA/Dec. Estimated using PyEphem and RA/Dec.</DESCRIPTION>
+      </FIELD>
+      <FIELD name="band_list" datatype="char" arraysize="30*" xtype="adql:VARCHAR">
+        <DESCRIPTION>Space delimited list of bands</DESCRIPTION>
+      </FIELD>
+      <FIELD name="em_resolution" datatype="double" ucd="spect.resolution;stat.mean" unit="m" utype="obscore:Char.SpectralAxis.Resolution.refval.value" xtype="adql:DOUBLE">
+        <DESCRIPTION>Estimated frequency resolution from all the spectral windows, using median values of channel widths.</DESCRIPTION>
+      </FIELD>
+      <FIELD name="bandwidth" datatype="double" ucd="em.freq;instr.bandpass" unit="Hz" utype="obscore:Char.SpectralAxis.Coverage.Bounds.Extent" xtype="adql:DOUBLE">
+        <DESCRIPTION>Total Bandwidth</DESCRIPTION>
+      </FIELD>
+      <FIELD name="antenna_arrays" datatype="char" arraysize="660*" ucd="meta.code.member;instr.setup" xtype="adql:VARCHAR">
+        <DESCRIPTION>Blank-separated list of Pad:Antenna pairs, i.e., A109:DV09 J504:DV02 J505:DV05 for antennas DV09, DV02 and DV05 sitting on pads A109, J504, and J505, respectively.</DESCRIPTION>
+      </FIELD>
+      <FIELD name="is_mosaic" datatype="char" xtype="adql:CHAR">
+        <DESCRIPTION>Flag to indicate if this ASDM represents a mosaic or not.</DESCRIPTION>
+      </FIELD>
+      <FIELD name="obs_release_date" datatype="char" arraysize="*" ucd="time.release" utype="obscore:Curation.releaseDate" xtype="adql:TIMESTAMP">
+        <DESCRIPTION>timestamp of date the data becomes publicly available</DESCRIPTION>
+      </FIELD>
+      <FIELD name="spatial_resolution" datatype="double" unit="arcsec" xtype="adql:DOUBLE">
+        <DESCRIPTION>Average of the maximum and minimum spatial resolution values of all spectral windows</DESCRIPTION>
+      </FIELD>
+      <FIELD name="frequency_support" datatype="char" arraysize="4000*" ucd="em.freq;obs;meta.main" unit="GHz" utype="obscore:Char.SpectralAxis.Coverage.Location.support" xtype="adql:VARCHAR">
+        <DESCRIPTION>All frequency ranges used by the field</DESCRIPTION>
+      </FIELD>
+      <FIELD name="frequency" datatype="double" ucd="em.freq;obs;meta.main" unit="GHz" utype="obscore:Char.SpectralAxis.Coverage.Location.refval" xtype="adql:DOUBLE">
+        <DESCRIPTION>Observed (tuned) reference frequency on the sky.</DESCRIPTION>
+      </FIELD>
+      <FIELD name="velocity_resolution" datatype="double" ucd="phys.veloc;spect.resolution" unit="m/s" utype="obscore:Char.VelocityAxis.Resolution.refval" xtype="adql:DOUBLE">
+        <DESCRIPTION>Estimated velocity resolution from all the spectral windows, from frequency resolution.</DESCRIPTION>
+      </FIELD>
+      <FIELD name="obs_creator_name" datatype="char" arraysize="256*" ucd="meta.id" utype="obscore:DataID.Creator" xtype="adql:VARCHAR">
+        <DESCRIPTION>case-insensitive partial match over the full PI name. Wildcards can be used</DESCRIPTION>
+      </FIELD>
+      <FIELD name="pub_title" datatype="char" arraysize="256*" xtype="adql:VARCHAR">
+        <DESCRIPTION>Case insensitive search through the title of the publication.</DESCRIPTION>
+      </FIELD>
+      <FIELD name="first_author" datatype="char" arraysize="256*" xtype="adql:VARCHAR">
+        <DESCRIPTION>The first author as provided by &lt;a href="http://telbib.eso.org"&gt;telbib.eso.org&lt;/a&gt;.</DESCRIPTION>
+      </FIELD>
+      <FIELD name="authors" datatype="char" arraysize="4000*" xtype="adql:VARCHAR">
+        <DESCRIPTION>Full list of first author and all co-authors</DESCRIPTION>
+      </FIELD>
+      <FIELD name="pub_abstract" datatype="char" arraysize="4000*" xtype="adql:VARCHAR">
+        <DESCRIPTION>Case insensitive text search through the abstract of the publication.</DESCRIPTION>
+      </FIELD>
+      <FIELD name="publication_year" datatype="int">
+        <DESCRIPTION>The year the publication did appear in the printed version of the refereed journal.</DESCRIPTION>
+      </FIELD>
+      <FIELD name="proposal_abstract" datatype="char" arraysize="4000*" ucd="meta.abstract" xtype="adql:VARCHAR">
+        <DESCRIPTION>Text search on the proposal abstract. Only abstracts will be returned which contain the given text. The search is case-insensitive.</DESCRIPTION>
+      </FIELD>
+      <FIELD name="schedblock_name" datatype="char" arraysize="128*" ucd="meta.code;obs;instr.setup" xtype="adql:VARCHAR">
+        <DESCRIPTION>Name of the Scheduling Block used as a template for executing the ASDM containing this Field.</DESCRIPTION>
+      </FIELD>
+      <FIELD name="proposal_authors" datatype="char" arraysize="2000*" ucd="meta.id.CoI" xtype="adql:VARCHAR">
+        <DESCRIPTION>Full name of CoIs .</DESCRIPTION>
+      </FIELD>
+      <FIELD name="sensitivity_10kms" datatype="double" unit="mJy/beam" xtype="adql:DOUBLE">
+        <DESCRIPTION>Estimated noise in an nominal 10km/s bandwidth. Note this is an indication only, it does not include the effects of flagging or Hanning smoothing, and a 10km/s bandwidth may not be achievable with the data as taken.</DESCRIPTION>
+      </FIELD>
+      <FIELD name="cont_sensitivity_bandwidth" datatype="double" unit="mJy/beam" xtype="adql:DOUBLE">
+        <DESCRIPTION>Estimated noise in the aggregated continuum bandwidth. Note this is an indication only, it does not include the effects of flagging or dynamic range limitations.</DESCRIPTION>
+      </FIELD>
+      <FIELD name="pwv" datatype="float" ucd="obs.atmos.extinction" unit="mm" xtype="adql:FLOAT">
+        <DESCRIPTION>Estimated precipitable water vapour from the XML_CALWVR_ENTITIES table.</DESCRIPTION>
+      </FIELD>
+      <FIELD name="group_ous_uid" datatype="char" arraysize="64*" xtype="adql:VARCHAR">
+        <DESCRIPTION>Group OUS ID</DESCRIPTION>
+      </FIELD>
+      <FIELD name="member_ous_uid" datatype="char" arraysize="64*" xtype="adql:VARCHAR">
+        <DESCRIPTION>Member OUS ID</DESCRIPTION>
+      </FIELD>
+      <FIELD name="asdm_uid" datatype="char" arraysize="32*" ucd="meta.id" xtype="adql:VARCHAR">
+        <DESCRIPTION>UID of the ASDM containing this Field.</DESCRIPTION>
+      </FIELD>
+      <FIELD name="obs_title" datatype="char" arraysize="256*" ucd="meta.title;obs" utype="obscore:DataID.Title" xtype="adql:VARCHAR">
+        <DESCRIPTION>Case-insensitive search over the project title</DESCRIPTION>
+      </FIELD>
+      <FIELD name="type" datatype="char" arraysize="16*" xtype="adql:VARCHAR">
+        <DESCRIPTION>Type flags.</DESCRIPTION>
+      </FIELD>
+      <FIELD name="scan_intent" datatype="char" arraysize="256*" ucd="meta.code.class;obs" xtype="adql:VARCHAR">
+        <DESCRIPTION>Scan intent list for the observed field.</DESCRIPTION>
+      </FIELD>
+      <FIELD name="science_observation" datatype="char" ucd="meta.code.class;obs" xtype="adql:VARCHAR">
+        <DESCRIPTION>Flag to indicate whether this is a science observation.</DESCRIPTION>
+      </FIELD>
+      <FIELD name="spatial_scale_max" datatype="double" ucd="pos.angResolution;stat.max" unit="arcsec" utype="obscore:Characterisation.SpatialAxis.Coverage.Bounds.limits.Interval.HiLim" xtype="adql:DOUBLE">
+        <DESCRIPTION>Due to the fact that radio antennas can not be placed infinitely close, measurements do have a smallest separation which translates into a maximal angular distance beyond which features can not be resolved reliably any more. Adding observations with the ALMA Total Power array can add those missing largest scales.</DESCRIPTION>
+      </FIELD>
+      <FIELD name="qa2_passed" datatype="char" ucd="meta.code" xtype="adql:CHAR">
+        <DESCRIPTION>Quality Assessment 2 status: does the Member / Group OUS fulfil the PI's requirements?</DESCRIPTION>
+      </FIELD>
+      <FIELD name="bib_reference" datatype="char" arraysize="4000*" ucd="meta.bib.bibcode" utype="obscore:Curation.Reference" xtype="adql:VARCHAR">
+        <DESCRIPTION>Bibliography code</DESCRIPTION>
+      </FIELD>
+      <FIELD name="science_keyword" datatype="char" arraysize="200*" xtype="adql:VARCHAR" />
+      <FIELD name="scientific_category" datatype="char" arraysize="200*" xtype="adql:VARCHAR" />
+      <FIELD name="lastModified" datatype="char" arraysize="32*" xtype="adql:TIMESTAMP">
+        <DESCRIPTION>Time stamp of last modification of the metadata</DESCRIPTION>
+      </FIELD>
+      <DATA>
+        <TABLEDATA>
+          <TR>
+            <TD />
+            <TD>akobelsk</TD>
+            <TD>phot.flux.density;phys.polarization</TD>
+            <TD>ADS/JAO.ALMA#2016.1.00788.S</TD>
+            <TD>ALMA</TD>
+            <TD>JAO</TD>
+            <TD>ALMA</TD>
+            <TD>uid://A001/X8a5/X4f.source.Sun_10.spw.5</TD>
+            <TD>image</TD>
+            <TD>2</TD>
+            <TD>Sun_10</TD>
+            <TD>0.9058333333333333</TD>
+            <TD>0.3811666666666666</TD>
+            <TD>0.016175722268427718</TD>
+            <TD>Circle ICRS 0.905833 0.381167 0.008088</TD>
+            <TD />
+            <TD />
+            <TD>128</TD>
+            <TD>1</TD>
+            <TD>2</TD>
+            <TD>2.7717732440500207</TD>
+            <TD>57833.654065</TD>
+            <TD>57833.698515</TD>
+            <TD>3064.32</TD>
+            <TD>3064.32</TD>
+            <TD>0.0031897276322912387</TD>
+            <TD>0.0032585260183149484</TD>
+            <TD>3007.5764</TD>
+            <TD>/XX/YY/</TD>
+            <TD>https://almascience.org/datalink/sync?ID=uid://A001/X8a5/X4f</TD>
+            <TD>application/x-votable+xml; content=datalink</TD>
+            <TD />
+            <TD>2016.1.00788.S</TD>
+            <TD>Public</TD>
+            <TD>98.31407817839181</TD>
+            <TD>-60.18507932444617</TD>
+            <TD>3</TD>
+            <TD>5.8559512405033676E10</TD>
+            <TD>2.0E9</TD>
+            <TD>A001:DA59 A002:DA49 A003:DV22 A004:DA41 A005:DA43 A006:DV15 A007:DV04 A008:DV07 A009:DV18 A010:DV23 A011:DV03 A013:DA53 A014:DV17 A015:DA61 A016:DV13 A017:DV24 A018:DV09 A019:DA42 A020:DV06 A021:DA44 A022:DA48 A023:DA51 A024:DA64 A026:DA54 A027:DA56 A029:DA60 A030:DV16 A034:DA46 A037:DV19 A039:DA58 A040:DV25 A041:DA63 A042:DV05 A043:DV08 A044:DV12 A046:DA50 A047:DA62 A048:DV10 A049:DA57 A050:DV14 J501:CM10 J502:CM02 J505:CM08 J506:CM05 N601:CM07 N603:CM09 N606:CM06</TD>
+            <TD>F</TD>
+            <TD>2018-08-11T00:00:00.000</TD>
+            <TD>2.7717732440500207</TD>
+            <TD>[92.00..93.99GHz,31250.00kHz,557.8uJy/beam@10km/s,22uJy/beam@native, XX YY] U [93.94..95.92GHz,31250.00kHz,553.3uJy/beam@10km/s,22uJy/beam@native, XX YY] U [104.00..105.99GHz,31250.00kHz,550.2uJy/beam@10km/s,23uJy/beam@native, XX YY] U [106.00..107.99GHz,31250.00kHz,557.7uJy/beam@10km/s,23.6uJy/beam@native, XX YY]</TD>
+            <TD>92.99466327709655</TD>
+            <TD>88380.21985589711</TD>
+            <TD>ALMA</TD>
+            <TD>A Publicly Available Multiobservatory Data Set of an Enhanced Network Patch from the Photosphere to the Corona Spatio-Temporal Comparisons of the Hydrogen-Alpha Line Width and ALMA 3 mm Brightness Temperature in the Weak Solar Network Subterahertz radius and limb brightening of the Sun derived from SST and ALMA The Solar ALMA Science Archive (SALSA). First release, SALAT, and FITS header standard The Subterahertz Solar Cycle: Polar and Equatorial Radii Derived from SST and ALMA The quiet sun at mm wavelengths as seen by ALMA</TD>
+            <TD>Alissandrakis, Costas E. Henriques, Vasco M. J. Kobelski, Adam R. Menezes, Fabian Tarr, Lucas A.</TD>
+            <TD>Alissandrakis, Costas E.; Bastian, T. S.; Brajša, Roman Henriques, Vasco M. J.; Jafarzadeh, Shahin; Guevara Gómez, Juan Camilo; Eklund, Henrik; Wedemeyer, Sven; Szydlarski, Mikołaj; Haugan, Stein Vidar H.; Mohan, Atul Kobelski, Adam R.; Tarr, Lucas A.; Jaeggli, Sarah A.; Luber, Nicholas; Warren, Harry P.; Savage, Sabrina Menezes, Fabian; Selhorst, Caius L.; Giménez de Castro, Carlos Guillermo; Valio, Adriana Tarr, Lucas A.; Kobelski, Adam R.; Jaeggli, Sarah A.; Molnar, Momchil; Cauzzi, Gianna; Reardon, Kevin P.</TD>
+            <TD>At subterahertz frequencies—i.e., millimeter and submillimeter wavelengths—there is a gap in measurements of the solar radius, as well as other parameters of the solar atmosphere. As the observational wavelength changes, the radius varies because the altitude of the dominant electromagnetic radiation is produced at different heights in the solar atmosphere. Moreover, radius variations throughout long time series are indicative of changes in the solar atmosphere that may be related to the solar cycle. Therefore, the solar radius is an important parameter for the calibration of solar atmospheric models enabling a better understanding of the atmospheric structure. In this work, we use data from the Solar Submillimeter-wave Telescope (SST) and the Atacama Large Millimeter/submillimeter Array (ALMA) at frequencies of 100, 212, 230, and 405 GHz to measure the equatorial and polar radii of the Sun. The radii measured with extensive data from the SST agree with the radius-versus-frequency trend present in the literature. The radii derived from ALMA maps at 230 GHz also agree with the radius-versus-frequency trend, whereas the 100 GHz radii are slightly above the values reported by other authors. In addition, we analyze the equatorial and polar radius behavior over the years by determining the correlation coefficient between solar activity and subterahertz radius time series at 212 and 405 GHz (SST). The variations of the SST-derived radii over 13 yr are correlated to the solar activity when considering equatorial regions of the solar atmosphere and anticorrelated when considering polar regions. The ALMA-derived radius time series for 100 and 230 GHz show very similar behaviors with those of SST. ...(5)</TD>
+            <TD>2021</TD>
+            <TD>ALMA offers a truly unique insight into the Sun by providing a linear thermometer into the chromosphere. These layers of the chromosphere are largely unstudied or have been muddled by line-of-sight effects common to optically thin measurements. Here we intend to use the advantages of ALMA in order to study one of the most readily available signatures of magnetic reconnection, microflares, in the chromosphere: the region through which the energy and plasma must flow to get into the corona. By observing the statistics of microflaring in two wavelengths, we will be able to better constrain the heights and dynamics of energy transfer in the chromosphere during magnetic reconnection.</TD>
+            <TD>Sun_10_a_03_INT</TD>
+            <TD>Jaeggli, Sarah; Savage, Sabrina; Tarr, Lucas;</TD>
+            <TD>0.5578226341169323</TD>
+            <TD>0.011305826389747326</TD>
+            <TD>3.099185</TD>
+            <TD>uid://A001/X8a5/X4e</TD>
+            <TD>uid://A001/X8a5/X4f</TD>
+            <TD>uid://A002/Xbe2ed7/X5ace</TD>
+            <TD>Microflares in the Chromosphere with ALMA</TD>
+            <TD>S</TD>
+            <TD>TARGET</TD>
+            <TD>T</TD>
+            <TD>28.892043422623917</TD>
+            <TD>T</TD>
+            <TD>2021ApJ...910...77M 2022A&amp;A...659A..31H 2022ApJS..261...15K 2022FrASS...9.1320A 2022MNRAS.511..877M 2023FrASS...978405T</TD>
+            <TD>The Sun, Transients</TD>
+            <TD>Sun</TD>
+            <TD>2023-04-10T18:35:03.734</TD>
+          </TR>
+          <TR>
+            <TD />
+            <TD>akobelsk</TD>
+            <TD>phot.flux.density;phys.polarization</TD>
+            <TD>ADS/JAO.ALMA#2016.1.00788.S</TD>
+            <TD>ALMA</TD>
+            <TD>JAO</TD>
+            <TD>ALMA</TD>
+            <TD>uid://A001/X8a5/X4f.source.Sun_10.spw.7</TD>
+            <TD>image</TD>
+            <TD>2</TD>
+            <TD>Sun_10</TD>
+            <TD>0.9058333333333333</TD>
+            <TD>0.3811666666666666</TD>
+            <TD>0.016175722268427718</TD>
+            <TD>Circle ICRS 0.905833 0.381167 0.008088</TD>
+            <TD />
+            <TD />
+            <TD>128</TD>
+            <TD>1</TD>
+            <TD>2</TD>
+            <TD>2.7717732440500207</TD>
+            <TD>57833.654065</TD>
+            <TD>57833.698515</TD>
+            <TD>3064.32</TD>
+            <TD>3064.32</TD>
+            <TD>0.003125300790463143</TD>
+            <TD>0.0031913192722936145</TD>
+            <TD>3069.5764</TD>
+            <TD>/XX/YY/</TD>
+            <TD>https://almascience.org/datalink/sync?ID=uid://A001/X8a5/X4f</TD>
+            <TD>application/x-votable+xml; content=datalink</TD>
+            <TD />
+            <TD>2016.1.00788.S</TD>
+            <TD>Public</TD>
+            <TD>98.31407817839181</TD>
+            <TD>-60.18507932444617</TD>
+            <TD>3</TD>
+            <TD>5.8559512405033676E10</TD>
+            <TD>2.0E9</TD>
+            <TD>A001:DA59 A002:DA49 A003:DV22 A004:DA41 A005:DA43 A006:DV15 A007:DV04 A008:DV07 A009:DV18 A010:DV23 A011:DV03 A013:DA53 A014:DV17 A015:DA61 A016:DV13 A017:DV24 A018:DV09 A019:DA42 A020:DV06 A021:DA44 A022:DA48 A023:DA51 A024:DA64 A026:DA54 A027:DA56 A029:DA60 A030:DV16 A034:DA46 A037:DV19 A039:DA58 A040:DV25 A041:DA63 A042:DV05 A043:DV08 A044:DV12 A046:DA50 A047:DA62 A048:DV10 A049:DA57 A050:DV14 J501:CM10 J502:CM02 J505:CM08 J506:CM05 N601:CM07 N603:CM09 N606:CM06</TD>
+            <TD>F</TD>
+            <TD>2018-08-11T00:00:00.000</TD>
+            <TD>2.7717732440500207</TD>
+            <TD>[92.00..93.99GHz,31250.00kHz,557.8uJy/beam@10km/s,22uJy/beam@native, XX YY] U [93.94..95.92GHz,31250.00kHz,553.3uJy/beam@10km/s,22uJy/beam@native, XX YY] U [104.00..105.99GHz,31250.00kHz,550.2uJy/beam@10km/s,23uJy/beam@native, XX YY] U [106.00..107.99GHz,31250.00kHz,557.7uJy/beam@10km/s,23.6uJy/beam@native, XX YY]</TD>
+            <TD>94.93216511631002</TD>
+            <TD>88380.21985589711</TD>
+            <TD>ALMA</TD>
+            <TD>A Publicly Available Multiobservatory Data Set of an Enhanced Network Patch from the Photosphere to the Corona Spatio-Temporal Comparisons of the Hydrogen-Alpha Line Width and ALMA 3 mm Brightness Temperature in the Weak Solar Network Subterahertz radius and limb brightening of the Sun derived from SST and ALMA The Solar ALMA Science Archive (SALSA). First release, SALAT, and FITS header standard The Subterahertz Solar Cycle: Polar and Equatorial Radii Derived from SST and ALMA The quiet sun at mm wavelengths as seen by ALMA</TD>
+            <TD>Alissandrakis, Costas E. Henriques, Vasco M. J. Kobelski, Adam R. Menezes, Fabian Tarr, Lucas A.</TD>
+            <TD>Alissandrakis, Costas E.; Bastian, T. S.; Brajša, Roman Henriques, Vasco M. J.; Jafarzadeh, Shahin; Guevara Gómez, Juan Camilo; Eklund, Henrik; Wedemeyer, Sven; Szydlarski, Mikołaj; Haugan, Stein Vidar H.; Mohan, Atul Kobelski, Adam R.; Tarr, Lucas A.; Jaeggli, Sarah A.; Luber, Nicholas; Warren, Harry P.; Savage, Sabrina Menezes, Fabian; Selhorst, Caius L.; Giménez de Castro, Carlos Guillermo; Valio, Adriana Tarr, Lucas A.; Kobelski, Adam R.; Jaeggli, Sarah A.; Molnar, Momchil; Cauzzi, Gianna; Reardon, Kevin P.</TD>
+            <TD>At subterahertz frequencies—i.e., millimeter and submillimeter wavelengths—there is a gap in measurements of the solar radius, as well as other parameters of the solar atmosphere. As the observational wavelength changes, the radius varies because the altitude of the dominant electromagnetic radiation is produced at different heights in the solar atmosphere. Moreover, radius variations throughout long time series are indicative of changes in the solar atmosphere that may be related to the solar cycle. Therefore, the solar radius is an important parameter for the calibration of solar atmospheric models enabling a better understanding of the atmospheric structure. In this work, we use data from the Solar Submillimeter-wave Telescope (SST) and the Atacama Large Millimeter/submillimeter Array (ALMA) at frequencies of 100, 212, 230, and 405 GHz to measure the equatorial and polar radii of the Sun. The radii measured with extensive data from the SST agree with the radius-versus-frequency trend present in the literature. The radii derived from ALMA maps at 230 GHz also agree with the radius-versus-frequency trend, whereas the 100 GHz radii are slightly above the values reported by other authors. In addition, we analyze the equatorial and polar radius behavior over the years by determining the correlation coefficient between solar activity and subterahertz radius time series at 212 and 405 GHz (SST). The variations of the SST-derived radii over 13 yr are correlated to the solar activity when considering equatorial regions of the solar atmosphere and anticorrelated when considering polar regions. The ALMA-derived radius time series for 100 and 230 GHz show very similar behaviors with those of SST. ...(5)</TD>
+            <TD>2021</TD>
+            <TD>ALMA offers a truly unique insight into the Sun by providing a linear thermometer into the chromosphere. These layers of the chromosphere are largely unstudied or have been muddled by line-of-sight effects common to optically thin measurements. Here we intend to use the advantages of ALMA in order to study one of the most readily available signatures of magnetic reconnection, microflares, in the chromosphere: the region through which the energy and plasma must flow to get into the corona. By observing the statistics of microflaring in two wavelengths, we will be able to better constrain the heights and dynamics of energy transfer in the chromosphere during magnetic reconnection.</TD>
+            <TD>Sun_10_a_03_INT</TD>
+            <TD>Jaeggli, Sarah; Savage, Sabrina; Tarr, Lucas;</TD>
+            <TD>0.5532747109148196</TD>
+            <TD>0.011305826389747326</TD>
+            <TD>3.099185</TD>
+            <TD>uid://A001/X8a5/X4e</TD>
+            <TD>uid://A001/X8a5/X4f</TD>
+            <TD>uid://A002/Xbe2ed7/X5ace</TD>
+            <TD>Microflares in the Chromosphere with ALMA</TD>
+            <TD>S</TD>
+            <TD>TARGET</TD>
+            <TD>T</TD>
+            <TD>28.892043422623917</TD>
+            <TD>T</TD>
+            <TD>2021ApJ...910...77M 2022A&amp;A...659A..31H 2022ApJS..261...15K 2022FrASS...9.1320A 2022MNRAS.511..877M 2023FrASS...978405T</TD>
+            <TD>The Sun, Transients</TD>
+            <TD>Sun</TD>
+            <TD>2023-04-10T18:35:03.734</TD>
+          </TR>
+          <TR>
+            <TD />
+            <TD>akobelsk</TD>
+            <TD>phot.flux.density;phys.polarization</TD>
+            <TD>ADS/JAO.ALMA#2016.1.00788.S</TD>
+            <TD>ALMA</TD>
+            <TD>JAO</TD>
+            <TD>ALMA</TD>
+            <TD>uid://A001/X8a5/X4f.source.Sun_10.spw.9</TD>
+            <TD>image</TD>
+            <TD>2</TD>
+            <TD>Sun_10</TD>
+            <TD>0.9058333333333333</TD>
+            <TD>0.3811666666666666</TD>
+            <TD>0.016175722268427718</TD>
+            <TD>Circle ICRS 0.905833 0.381167 0.008088</TD>
+            <TD />
+            <TD />
+            <TD>128</TD>
+            <TD>1</TD>
+            <TD>2</TD>
+            <TD>2.7717732440500207</TD>
+            <TD>57833.654065</TD>
+            <TD>57833.698515</TD>
+            <TD>3064.32</TD>
+            <TD>3064.32</TD>
+            <TD>0.0028285812901950274</TD>
+            <TD>0.002882550878130985</TD>
+            <TD>3328.0764</TD>
+            <TD>/XX/YY/</TD>
+            <TD>https://almascience.org/datalink/sync?ID=uid://A001/X8a5/X4f</TD>
+            <TD>application/x-votable+xml; content=datalink</TD>
+            <TD />
+            <TD>2016.1.00788.S</TD>
+            <TD>Public</TD>
+            <TD>98.31407817839181</TD>
+            <TD>-60.18507932444617</TD>
+            <TD>3</TD>
+            <TD>5.8559512405033676E10</TD>
+            <TD>2.0E9</TD>
+            <TD>A001:DA59 A002:DA49 A003:DV22 A004:DA41 A005:DA43 A006:DV15 A007:DV04 A008:DV07 A009:DV18 A010:DV23 A011:DV03 A013:DA53 A014:DV17 A015:DA61 A016:DV13 A017:DV24 A018:DV09 A019:DA42 A020:DV06 A021:DA44 A022:DA48 A023:DA51 A024:DA64 A026:DA54 A027:DA56 A029:DA60 A030:DV16 A034:DA46 A037:DV19 A039:DA58 A040:DV25 A041:DA63 A042:DV05 A043:DV08 A044:DV12 A046:DA50 A047:DA62 A048:DV10 A049:DA57 A050:DV14 J501:CM10 J502:CM02 J505:CM08 J506:CM05 N601:CM07 N603:CM09 N606:CM06</TD>
+            <TD>F</TD>
+            <TD>2018-08-11T00:00:00.000</TD>
+            <TD>2.7717732440500207</TD>
+            <TD>[92.00..93.99GHz,31250.00kHz,557.8uJy/beam@10km/s,22uJy/beam@native, XX YY] U [93.94..95.92GHz,31250.00kHz,553.3uJy/beam@10km/s,22uJy/beam@native, XX YY] U [104.00..105.99GHz,31250.00kHz,550.2uJy/beam@10km/s,23uJy/beam@native, XX YY] U [106.00..107.99GHz,31250.00kHz,557.7uJy/beam@10km/s,23.6uJy/beam@native, XX YY]</TD>
+            <TD>104.99467466835415</TD>
+            <TD>88380.21985589711</TD>
+            <TD>ALMA</TD>
+            <TD>A Publicly Available Multiobservatory Data Set of an Enhanced Network Patch from the Photosphere to the Corona Spatio-Temporal Comparisons of the Hydrogen-Alpha Line Width and ALMA 3 mm Brightness Temperature in the Weak Solar Network Subterahertz radius and limb brightening of the Sun derived from SST and ALMA The Solar ALMA Science Archive (SALSA). First release, SALAT, and FITS header standard The Subterahertz Solar Cycle: Polar and Equatorial Radii Derived from SST and ALMA The quiet sun at mm wavelengths as seen by ALMA</TD>
+            <TD>Alissandrakis, Costas E. Henriques, Vasco M. J. Kobelski, Adam R. Menezes, Fabian Tarr, Lucas A.</TD>
+            <TD>Alissandrakis, Costas E.; Bastian, T. S.; Brajša, Roman Henriques, Vasco M. J.; Jafarzadeh, Shahin; Guevara Gómez, Juan Camilo; Eklund, Henrik; Wedemeyer, Sven; Szydlarski, Mikołaj; Haugan, Stein Vidar H.; Mohan, Atul Kobelski, Adam R.; Tarr, Lucas A.; Jaeggli, Sarah A.; Luber, Nicholas; Warren, Harry P.; Savage, Sabrina Menezes, Fabian; Selhorst, Caius L.; Giménez de Castro, Carlos Guillermo; Valio, Adriana Tarr, Lucas A.; Kobelski, Adam R.; Jaeggli, Sarah A.; Molnar, Momchil; Cauzzi, Gianna; Reardon, Kevin P.</TD>
+            <TD>At subterahertz frequencies—i.e., millimeter and submillimeter wavelengths—there is a gap in measurements of the solar radius, as well as other parameters of the solar atmosphere. As the observational wavelength changes, the radius varies because the altitude of the dominant electromagnetic radiation is produced at different heights in the solar atmosphere. Moreover, radius variations throughout long time series are indicative of changes in the solar atmosphere that may be related to the solar cycle. Therefore, the solar radius is an important parameter for the calibration of solar atmospheric models enabling a better understanding of the atmospheric structure. In this work, we use data from the Solar Submillimeter-wave Telescope (SST) and the Atacama Large Millimeter/submillimeter Array (ALMA) at frequencies of 100, 212, 230, and 405 GHz to measure the equatorial and polar radii of the Sun. The radii measured with extensive data from the SST agree with the radius-versus-frequency trend present in the literature. The radii derived from ALMA maps at 230 GHz also agree with the radius-versus-frequency trend, whereas the 100 GHz radii are slightly above the values reported by other authors. In addition, we analyze the equatorial and polar radius behavior over the years by determining the correlation coefficient between solar activity and subterahertz radius time series at 212 and 405 GHz (SST). The variations of the SST-derived radii over 13 yr are correlated to the solar activity when considering equatorial regions of the solar atmosphere and anticorrelated when considering polar regions. The ALMA-derived radius time series for 100 and 230 GHz show very similar behaviors with those of SST. ...(5)</TD>
+            <TD>2021</TD>
+            <TD>ALMA offers a truly unique insight into the Sun by providing a linear thermometer into the chromosphere. These layers of the chromosphere are largely unstudied or have been muddled by line-of-sight effects common to optically thin measurements. Here we intend to use the advantages of ALMA in order to study one of the most readily available signatures of magnetic reconnection, microflares, in the chromosphere: the region through which the energy and plasma must flow to get into the corona. By observing the statistics of microflaring in two wavelengths, we will be able to better constrain the heights and dynamics of energy transfer in the chromosphere during magnetic reconnection.</TD>
+            <TD>Sun_10_a_03_INT</TD>
+            <TD>Jaeggli, Sarah; Savage, Sabrina; Tarr, Lucas;</TD>
+            <TD>0.5502288771617164</TD>
+            <TD>0.011305826389747326</TD>
+            <TD>3.099185</TD>
+            <TD>uid://A001/X8a5/X4e</TD>
+            <TD>uid://A001/X8a5/X4f</TD>
+            <TD>uid://A002/Xbe2ed7/X5ace</TD>
+            <TD>Microflares in the Chromosphere with ALMA</TD>
+            <TD>S</TD>
+            <TD>TARGET</TD>
+            <TD>T</TD>
+            <TD>28.892043422623917</TD>
+            <TD>T</TD>
+            <TD>2021ApJ...910...77M 2022A&amp;A...659A..31H 2022ApJS..261...15K 2022FrASS...9.1320A 2022MNRAS.511..877M 2023FrASS...978405T</TD>
+            <TD>The Sun, Transients</TD>
+            <TD>Sun</TD>
+            <TD>2023-04-10T18:35:03.734</TD>
+          </TR>
+          <TR>
+            <TD />
+            <TD>akobelsk</TD>
+            <TD>phot.flux.density;phys.polarization</TD>
+            <TD>ADS/JAO.ALMA#2016.1.00788.S</TD>
+            <TD>ALMA</TD>
+            <TD>JAO</TD>
+            <TD>ALMA</TD>
+            <TD>uid://A001/X8a5/X4f.source.Sun_10.spw.11</TD>
+            <TD>image</TD>
+            <TD>2</TD>
+            <TD>Sun_10</TD>
+            <TD>0.9058333333333333</TD>
+            <TD>0.3811666666666666</TD>
+            <TD>0.016175722268427718</TD>
+            <TD>Circle ICRS 0.905833 0.381167 0.008088</TD>
+            <TD />
+            <TD />
+            <TD>128</TD>
+            <TD>1</TD>
+            <TD>2</TD>
+            <TD>2.7717732440500207</TD>
+            <TD>57833.654065</TD>
+            <TD>57833.698515</TD>
+            <TD>3064.32</TD>
+            <TD>3064.32</TD>
+            <TD>0.002776193734077767</TD>
+            <TD>0.002828164350692988</TD>
+            <TD>3392.0764</TD>
+            <TD>/XX/YY/</TD>
+            <TD>https://almascience.org/datalink/sync?ID=uid://A001/X8a5/X4f</TD>
+            <TD>application/x-votable+xml; content=datalink</TD>
+            <TD />
+            <TD>2016.1.00788.S</TD>
+            <TD>Public</TD>
+            <TD>98.31407817839181</TD>
+            <TD>-60.18507932444617</TD>
+            <TD>3</TD>
+            <TD>5.8559512405033676E10</TD>
+            <TD>2.0E9</TD>
+            <TD>A001:DA59 A002:DA49 A003:DV22 A004:DA41 A005:DA43 A006:DV15 A007:DV04 A008:DV07 A009:DV18 A010:DV23 A011:DV03 A013:DA53 A014:DV17 A015:DA61 A016:DV13 A017:DV24 A018:DV09 A019:DA42 A020:DV06 A021:DA44 A022:DA48 A023:DA51 A024:DA64 A026:DA54 A027:DA56 A029:DA60 A030:DV16 A034:DA46 A037:DV19 A039:DA58 A040:DV25 A041:DA63 A042:DV05 A043:DV08 A044:DV12 A046:DA50 A047:DA62 A048:DV10 A049:DA57 A050:DV14 J501:CM10 J502:CM02 J505:CM08 J506:CM05 N601:CM07 N603:CM09 N606:CM06</TD>
+            <TD>F</TD>
+            <TD>2018-08-11T00:00:00.000</TD>
+            <TD>2.7717732440500207</TD>
+            <TD>[92.00..93.99GHz,31250.00kHz,557.8uJy/beam@10km/s,22uJy/beam@native, XX YY] U [93.94..95.92GHz,31250.00kHz,553.3uJy/beam@10km/s,22uJy/beam@native, XX YY] U [104.00..105.99GHz,31250.00kHz,550.2uJy/beam@10km/s,23uJy/beam@native, XX YY] U [106.00..107.99GHz,31250.00kHz,557.7uJy/beam@10km/s,23.6uJy/beam@native, XX YY]</TD>
+            <TD>106.99467656689708</TD>
+            <TD>88380.21985589711</TD>
+            <TD>ALMA</TD>
+            <TD>A Publicly Available Multiobservatory Data Set of an Enhanced Network Patch from the Photosphere to the Corona Spatio-Temporal Comparisons of the Hydrogen-Alpha Line Width and ALMA 3 mm Brightness Temperature in the Weak Solar Network Subterahertz radius and limb brightening of the Sun derived from SST and ALMA The Solar ALMA Science Archive (SALSA). First release, SALAT, and FITS header standard The Subterahertz Solar Cycle: Polar and Equatorial Radii Derived from SST and ALMA The quiet sun at mm wavelengths as seen by ALMA</TD>
+            <TD>Alissandrakis, Costas E. Henriques, Vasco M. J. Kobelski, Adam R. Menezes, Fabian Tarr, Lucas A.</TD>
+            <TD>Alissandrakis, Costas E.; Bastian, T. S.; Brajša, Roman Henriques, Vasco M. J.; Jafarzadeh, Shahin; Guevara Gómez, Juan Camilo; Eklund, Henrik; Wedemeyer, Sven; Szydlarski, Mikołaj; Haugan, Stein Vidar H.; Mohan, Atul Kobelski, Adam R.; Tarr, Lucas A.; Jaeggli, Sarah A.; Luber, Nicholas; Warren, Harry P.; Savage, Sabrina Menezes, Fabian; Selhorst, Caius L.; Giménez de Castro, Carlos Guillermo; Valio, Adriana Tarr, Lucas A.; Kobelski, Adam R.; Jaeggli, Sarah A.; Molnar, Momchil; Cauzzi, Gianna; Reardon, Kevin P.</TD>
+            <TD>At subterahertz frequencies—i.e., millimeter and submillimeter wavelengths—there is a gap in measurements of the solar radius, as well as other parameters of the solar atmosphere. As the observational wavelength changes, the radius varies because the altitude of the dominant electromagnetic radiation is produced at different heights in the solar atmosphere. Moreover, radius variations throughout long time series are indicative of changes in the solar atmosphere that may be related to the solar cycle. Therefore, the solar radius is an important parameter for the calibration of solar atmospheric models enabling a better understanding of the atmospheric structure. In this work, we use data from the Solar Submillimeter-wave Telescope (SST) and the Atacama Large Millimeter/submillimeter Array (ALMA) at frequencies of 100, 212, 230, and 405 GHz to measure the equatorial and polar radii of the Sun. The radii measured with extensive data from the SST agree with the radius-versus-frequency trend present in the literature. The radii derived from ALMA maps at 230 GHz also agree with the radius-versus-frequency trend, whereas the 100 GHz radii are slightly above the values reported by other authors. In addition, we analyze the equatorial and polar radius behavior over the years by determining the correlation coefficient between solar activity and subterahertz radius time series at 212 and 405 GHz (SST). The variations of the SST-derived radii over 13 yr are correlated to the solar activity when considering equatorial regions of the solar atmosphere and anticorrelated when considering polar regions. The ALMA-derived radius time series for 100 and 230 GHz show very similar behaviors with those of SST. ...(5)</TD>
+            <TD>2021</TD>
+            <TD>ALMA offers a truly unique insight into the Sun by providing a linear thermometer into the chromosphere. These layers of the chromosphere are largely unstudied or have been muddled by line-of-sight effects common to optically thin measurements. Here we intend to use the advantages of ALMA in order to study one of the most readily available signatures of magnetic reconnection, microflares, in the chromosphere: the region through which the energy and plasma must flow to get into the corona. By observing the statistics of microflaring in two wavelengths, we will be able to better constrain the heights and dynamics of energy transfer in the chromosphere during magnetic reconnection.</TD>
+            <TD>Sun_10_a_03_INT</TD>
+            <TD>Jaeggli, Sarah; Savage, Sabrina; Tarr, Lucas;</TD>
+            <TD>0.5576814900229252</TD>
+            <TD>0.011305826389747326</TD>
+            <TD>3.099185</TD>
+            <TD>uid://A001/X8a5/X4e</TD>
+            <TD>uid://A001/X8a5/X4f</TD>
+            <TD>uid://A002/Xbe2ed7/X5ace</TD>
+            <TD>Microflares in the Chromosphere with ALMA</TD>
+            <TD>S</TD>
+            <TD>TARGET</TD>
+            <TD>T</TD>
+            <TD>28.892043422623917</TD>
+            <TD>T</TD>
+            <TD>2021ApJ...910...77M 2022A&amp;A...659A..31H 2022ApJS..261...15K 2022FrASS...9.1320A 2022MNRAS.511..877M 2023FrASS...978405T</TD>
+            <TD>The Sun, Transients</TD>
+            <TD>Sun</TD>
+            <TD>2023-04-10T18:35:03.734</TD>
+          </TR>
+          <TR>
+            <TD />
+            <TD>akobelsk</TD>
+            <TD>phot.flux.density;phys.polarization</TD>
+            <TD>ADS/JAO.ALMA#2016.1.00788.S</TD>
+            <TD>ALMA</TD>
+            <TD>JAO</TD>
+            <TD>ALMA</TD>
+            <TD>uid://A001/X8a5/X51.source.Sun.spw.0</TD>
+            <TD>image</TD>
+            <TD>2</TD>
+            <TD>Sun</TD>
+            <TD>0.9122569444444446</TD>
+            <TD>0.39610194444444446</TD>
+            <TD>0.06601494766048098</TD>
+            <TD>Union ICRS ( Polygon 0.890702 0.380327 0.889078 0.377768 0.886626 0.375986 0.883182 0.375217 0.880205 0.375785 0.877645 0.377409 0.875864 0.379861 0.875110 0.382797 0.875864 0.386748 0.877645 0.389200 0.880205 0.390824 0.883182 0.391392 0.886159 0.390824 0.889078 0.388841 0.890702 0.386282 0.891270 0.383304 Polygon 0.928553 0.398506 0.927654 0.395862 0.926103 0.393863 0.924010 0.392440 0.921580 0.391735 0.919051 0.391814 0.916670 0.392671 0.914670 0.394222 0.913248 0.396315 0.912542 0.398745 0.912621 0.401274 0.913737 0.404092 0.915411 0.405990 0.917589 0.407279 0.920058 0.407831 0.922578 0.407592 0.925078 0.406758 0.925935 0.409139 0.927486 0.411139 0.929579 0.412561 0.932009 0.413267 0.934538 0.413187 0.937356 0.412072 0.939254 0.410398 0.940543 0.408220 0.941095 0.405751 0.940856 0.403231 0.939851 0.400909 0.938178 0.399011 0.936000 0.397723 0.933530 0.397171 0.931011 0.397409)</TD>
+            <TD />
+            <TD />
+            <TD>1</TD>
+            <TD>1</TD>
+            <TD>2</TD>
+            <TD>58.23257234376058</TD>
+            <TD>57833.6515</TD>
+            <TD>57833.701166</TD>
+            <TD>307.617</TD>
+            <TD>307.617</TD>
+            <TD>0.003223758269555736</TD>
+            <TD>0.0032237597588358562</TD>
+            <TD>46.4972875</TD>
+            <TD>/XX/YY/</TD>
+            <TD>https://almascience.org/datalink/sync?ID=uid://A001/X8a5/X51</TD>
+            <TD>application/x-votable+xml; content=datalink</TD>
+            <TD />
+            <TD>2016.1.00788.S</TD>
+            <TD>Public</TD>
+            <TD>98.33720421641443</TD>
+            <TD>-60.17357969147571</TD>
+            <TD>3</TD>
+            <TD>3.747808734655711E12</TD>
+            <TD>2.0E9</TD>
+            <TD>T701:PM03 T703:PM04 T704:PM01</TD>
+            <TD>T</TD>
+            <TD>2018-07-28T19:14:45.000</TD>
+            <TD>52.56391485896973</TD>
+            <TD>[92.99..92.99GHz,2000000.00kHz,44.5mJy/beam@10km/s,1.8mJy/beam@native, XX YY] U [94.93..94.93GHz,2000000.00kHz,44.2mJy/beam@10km/s,1.8mJy/beam@native, XX YY] U [104.99..104.99GHz,2000000.00kHz,44.8mJy/beam@10km/s,1.9mJy/beam@native, XX YY] U [106.99..106.99GHz,2000000.00kHz,45.5mJy/beam@10km/s,1.9mJy/beam@native, XX YY]</TD>
+            <TD>92.99468622805935</TD>
+            <TD>5603881.467822083</TD>
+            <TD>ALMA</TD>
+            <TD>A Publicly Available Multiobservatory Data Set of an Enhanced Network Patch from the Photosphere to the Corona Spatio-Temporal Comparisons of the Hydrogen-Alpha Line Width and ALMA 3 mm Brightness Temperature in the Weak Solar Network Subterahertz radius and limb brightening of the Sun derived from SST and ALMA The Solar ALMA Science Archive (SALSA). First release, SALAT, and FITS header standard The Subterahertz Solar Cycle: Polar and Equatorial Radii Derived from SST and ALMA The quiet sun at mm wavelengths as seen by ALMA</TD>
+            <TD>Alissandrakis, Costas E. Henriques, Vasco M. J. Kobelski, Adam R. Menezes, Fabian Tarr, Lucas A.</TD>
+            <TD>Alissandrakis, Costas E.; Bastian, T. S.; Brajša, Roman Henriques, Vasco M. J.; Jafarzadeh, Shahin; Guevara Gómez, Juan Camilo; Eklund, Henrik; Wedemeyer, Sven; Szydlarski, Mikołaj; Haugan, Stein Vidar H.; Mohan, Atul Kobelski, Adam R.; Tarr, Lucas A.; Jaeggli, Sarah A.; Luber, Nicholas; Warren, Harry P.; Savage, Sabrina Menezes, Fabian; Selhorst, Caius L.; Giménez de Castro, Carlos Guillermo; Valio, Adriana Tarr, Lucas A.; Kobelski, Adam R.; Jaeggli, Sarah A.; Molnar, Momchil; Cauzzi, Gianna; Reardon, Kevin P.</TD>
+            <TD>At subterahertz frequencies—i.e., millimeter and submillimeter wavelengths—there is a gap in measurements of the solar radius, as well as other parameters of the solar atmosphere. As the observational wavelength changes, the radius varies because the altitude of the dominant electromagnetic radiation is produced at different heights in the solar atmosphere. Moreover, radius variations throughout long time series are indicative of changes in the solar atmosphere that may be related to the solar cycle. Therefore, the solar radius is an important parameter for the calibration of solar atmospheric models enabling a better understanding of the atmospheric structure. In this work, we use data from the Solar Submillimeter-wave Telescope (SST) and the Atacama Large Millimeter/submillimeter Array (ALMA) at frequencies of 100, 212, 230, and 405 GHz to measure the equatorial and polar radii of the Sun. The radii measured with extensive data from the SST agree with the radius-versus-frequency trend present in the literature. The radii derived from ALMA maps at 230 GHz also agree with the radius-versus-frequency trend, whereas the 100 GHz radii are slightly above the values reported by other authors. In addition, we analyze the equatorial and polar radius behavior over the years by determining the correlation coefficient between solar activity and subterahertz radius time series at 212 and 405 GHz (SST). The variations of the SST-derived radii over 13 yr are correlated to the solar activity when considering equatorial regions of the solar atmosphere and anticorrelated when considering polar regions. The ALMA-derived radius time series for 100 and 230 GHz show very similar behaviors with those of SST. ...(5)</TD>
+            <TD>2021</TD>
+            <TD>ALMA offers a truly unique insight into the Sun by providing a linear thermometer into the chromosphere. These layers of the chromosphere are largely unstudied or have been muddled by line-of-sight effects common to optically thin measurements. Here we intend to use the advantages of ALMA in order to study one of the most readily available signatures of magnetic reconnection, microflares, in the chromosphere: the region through which the energy and plasma must flow to get into the corona. By observing the statistics of microflaring in two wavelengths, we will be able to better constrain the heights and dynamics of energy transfer in the chromosphere during magnetic reconnection.</TD>
+            <TD>Sun_10_a_03_TP</TD>
+            <TD>Jaeggli, Sarah; Savage, Sabrina; Tarr, Lucas;</TD>
+            <TD>44.45348001438879</TD>
+            <TD>0.9110074566167298</TD>
+            <TD>5.186</TD>
+            <TD>uid://A001/X8a5/X4e</TD>
+            <TD>uid://A001/X8a5/X51</TD>
+            <TD>uid://A002/Xbe2ed7/X5bd1</TD>
+            <TD>Microflares in the Chromosphere with ALMA</TD>
+            <TD>S</TD>
+            <TD>TARGET</TD>
+            <TD>T</TD>
+            <TD>931.7215879275407</TD>
+            <TD>T</TD>
+            <TD>2021ApJ...910...77M 2022A&amp;A...659A..31H 2022ApJS..261...15K 2022FrASS...9.1320A 2022MNRAS.511..877M 2023FrASS...978405T</TD>
+            <TD>The Sun, Transients</TD>
+            <TD>Sun</TD>
+            <TD>2023-04-10T18:35:03.734</TD>
+          </TR>
+          <TR>
+            <TD />
+            <TD>akobelsk</TD>
+            <TD>phot.flux.density;phys.polarization</TD>
+            <TD>ADS/JAO.ALMA#2016.1.00788.S</TD>
+            <TD>ALMA</TD>
+            <TD>JAO</TD>
+            <TD>ALMA</TD>
+            <TD>uid://A001/X8a5/X51.source.Sun.spw.1</TD>
+            <TD>image</TD>
+            <TD>2</TD>
+            <TD>Sun</TD>
+            <TD>0.9122569444444446</TD>
+            <TD>0.39610194444444446</TD>
+            <TD>0.06601494766048098</TD>
+            <TD>Union ICRS ( Polygon 0.890702 0.380327 0.889078 0.377768 0.886626 0.375986 0.883182 0.375217 0.880205 0.375785 0.877645 0.377409 0.875864 0.379861 0.875110 0.382797 0.875864 0.386748 0.877645 0.389200 0.880205 0.390824 0.883182 0.391392 0.886159 0.390824 0.889078 0.388841 0.890702 0.386282 0.891270 0.383304 Polygon 0.928553 0.398506 0.927654 0.395862 0.926103 0.393863 0.924010 0.392440 0.921580 0.391735 0.919051 0.391814 0.916670 0.392671 0.914670 0.394222 0.913248 0.396315 0.912542 0.398745 0.912621 0.401274 0.913737 0.404092 0.915411 0.405990 0.917589 0.407279 0.920058 0.407831 0.922578 0.407592 0.925078 0.406758 0.925935 0.409139 0.927486 0.411139 0.929579 0.412561 0.932009 0.413267 0.934538 0.413187 0.937356 0.412072 0.939254 0.410398 0.940543 0.408220 0.941095 0.405751 0.940856 0.403231 0.939851 0.400909 0.938178 0.399011 0.936000 0.397723 0.933530 0.397171 0.931011 0.397409)</TD>
+            <TD />
+            <TD />
+            <TD>1</TD>
+            <TD>1</TD>
+            <TD>2</TD>
+            <TD>58.23257234376058</TD>
+            <TD>57833.6515</TD>
+            <TD>57833.701166</TD>
+            <TD>307.617</TD>
+            <TD>307.617</TD>
+            <TD>0.00315796352476306</TD>
+            <TD>0.0031579649836479713</TD>
+            <TD>47.4660375</TD>
+            <TD>/XX/YY/</TD>
+            <TD>https://almascience.org/datalink/sync?ID=uid://A001/X8a5/X51</TD>
+            <TD>application/x-votable+xml; content=datalink</TD>
+            <TD />
+            <TD>2016.1.00788.S</TD>
+            <TD>Public</TD>
+            <TD>98.33720421641443</TD>
+            <TD>-60.17357969147571</TD>
+            <TD>3</TD>
+            <TD>3.747808734655711E12</TD>
+            <TD>2.0E9</TD>
+            <TD>T701:PM03 T703:PM04 T704:PM01</TD>
+            <TD>T</TD>
+            <TD>2018-07-28T19:14:45.000</TD>
+            <TD>52.56391485896973</TD>
+            <TD>[92.99..92.99GHz,2000000.00kHz,44.5mJy/beam@10km/s,1.8mJy/beam@native, XX YY] U [94.93..94.93GHz,2000000.00kHz,44.2mJy/beam@10km/s,1.8mJy/beam@native, XX YY] U [104.99..104.99GHz,2000000.00kHz,44.8mJy/beam@10km/s,1.9mJy/beam@native, XX YY] U [106.99..106.99GHz,2000000.00kHz,45.5mJy/beam@10km/s,1.9mJy/beam@native, XX YY]</TD>
+            <TD>94.93218854544575</TD>
+            <TD>5603881.467822083</TD>
+            <TD>ALMA</TD>
+            <TD>A Publicly Available Multiobservatory Data Set of an Enhanced Network Patch from the Photosphere to the Corona Spatio-Temporal Comparisons of the Hydrogen-Alpha Line Width and ALMA 3 mm Brightness Temperature in the Weak Solar Network Subterahertz radius and limb brightening of the Sun derived from SST and ALMA The Solar ALMA Science Archive (SALSA). First release, SALAT, and FITS header standard The Subterahertz Solar Cycle: Polar and Equatorial Radii Derived from SST and ALMA The quiet sun at mm wavelengths as seen by ALMA</TD>
+            <TD>Alissandrakis, Costas E. Henriques, Vasco M. J. Kobelski, Adam R. Menezes, Fabian Tarr, Lucas A.</TD>
+            <TD>Alissandrakis, Costas E.; Bastian, T. S.; Brajša, Roman Henriques, Vasco M. J.; Jafarzadeh, Shahin; Guevara Gómez, Juan Camilo; Eklund, Henrik; Wedemeyer, Sven; Szydlarski, Mikołaj; Haugan, Stein Vidar H.; Mohan, Atul Kobelski, Adam R.; Tarr, Lucas A.; Jaeggli, Sarah A.; Luber, Nicholas; Warren, Harry P.; Savage, Sabrina Menezes, Fabian; Selhorst, Caius L.; Giménez de Castro, Carlos Guillermo; Valio, Adriana Tarr, Lucas A.; Kobelski, Adam R.; Jaeggli, Sarah A.; Molnar, Momchil; Cauzzi, Gianna; Reardon, Kevin P.</TD>
+            <TD>At subterahertz frequencies—i.e., millimeter and submillimeter wavelengths—there is a gap in measurements of the solar radius, as well as other parameters of the solar atmosphere. As the observational wavelength changes, the radius varies because the altitude of the dominant electromagnetic radiation is produced at different heights in the solar atmosphere. Moreover, radius variations throughout long time series are indicative of changes in the solar atmosphere that may be related to the solar cycle. Therefore, the solar radius is an important parameter for the calibration of solar atmospheric models enabling a better understanding of the atmospheric structure. In this work, we use data from the Solar Submillimeter-wave Telescope (SST) and the Atacama Large Millimeter/submillimeter Array (ALMA) at frequencies of 100, 212, 230, and 405 GHz to measure the equatorial and polar radii of the Sun. The radii measured with extensive data from the SST agree with the radius-versus-frequency trend present in the literature. The radii derived from ALMA maps at 230 GHz also agree with the radius-versus-frequency trend, whereas the 100 GHz radii are slightly above the values reported by other authors. In addition, we analyze the equatorial and polar radius behavior over the years by determining the correlation coefficient between solar activity and subterahertz radius time series at 212 and 405 GHz (SST). The variations of the SST-derived radii over 13 yr are correlated to the solar activity when considering equatorial regions of the solar atmosphere and anticorrelated when considering polar regions. The ALMA-derived radius time series for 100 and 230 GHz show very similar behaviors with those of SST. ...(5)</TD>
+            <TD>2021</TD>
+            <TD>ALMA offers a truly unique insight into the Sun by providing a linear thermometer into the chromosphere. These layers of the chromosphere are largely unstudied or have been muddled by line-of-sight effects common to optically thin measurements. Here we intend to use the advantages of ALMA in order to study one of the most readily available signatures of magnetic reconnection, microflares, in the chromosphere: the region through which the energy and plasma must flow to get into the corona. By observing the statistics of microflaring in two wavelengths, we will be able to better constrain the heights and dynamics of energy transfer in the chromosphere during magnetic reconnection.</TD>
+            <TD>Sun_10_a_03_TP</TD>
+            <TD>Jaeggli, Sarah; Savage, Sabrina; Tarr, Lucas;</TD>
+            <TD>44.24950984422641</TD>
+            <TD>0.9110074566167298</TD>
+            <TD>5.186</TD>
+            <TD>uid://A001/X8a5/X4e</TD>
+            <TD>uid://A001/X8a5/X51</TD>
+            <TD>uid://A002/Xbe2ed7/X5bd1</TD>
+            <TD>Microflares in the Chromosphere with ALMA</TD>
+            <TD>S</TD>
+            <TD>TARGET</TD>
+            <TD>T</TD>
+            <TD>931.7215879275407</TD>
+            <TD>T</TD>
+            <TD>2021ApJ...910...77M 2022A&amp;A...659A..31H 2022ApJS..261...15K 2022FrASS...9.1320A 2022MNRAS.511..877M 2023FrASS...978405T</TD>
+            <TD>The Sun, Transients</TD>
+            <TD>Sun</TD>
+            <TD>2023-04-10T18:35:03.734</TD>
+          </TR>
+          <TR>
+            <TD />
+            <TD>akobelsk</TD>
+            <TD>phot.flux.density;phys.polarization</TD>
+            <TD>ADS/JAO.ALMA#2016.1.00788.S</TD>
+            <TD>ALMA</TD>
+            <TD>JAO</TD>
+            <TD>ALMA</TD>
+            <TD>uid://A001/X8a5/X51.source.Sun.spw.2</TD>
+            <TD>image</TD>
+            <TD>2</TD>
+            <TD>Sun</TD>
+            <TD>0.9122569444444446</TD>
+            <TD>0.39610194444444446</TD>
+            <TD>0.06601494766048098</TD>
+            <TD>Union ICRS ( Polygon 0.890702 0.380327 0.889078 0.377768 0.886626 0.375986 0.883182 0.375217 0.880205 0.375785 0.877645 0.377409 0.875864 0.379861 0.875110 0.382797 0.875864 0.386748 0.877645 0.389200 0.880205 0.390824 0.883182 0.391392 0.886159 0.390824 0.889078 0.388841 0.890702 0.386282 0.891270 0.383304 Polygon 0.928553 0.398506 0.927654 0.395862 0.926103 0.393863 0.924010 0.392440 0.921580 0.391735 0.919051 0.391814 0.916670 0.392671 0.914670 0.394222 0.913248 0.396315 0.912542 0.398745 0.912621 0.401274 0.913737 0.404092 0.915411 0.405990 0.917589 0.407279 0.920058 0.407831 0.922578 0.407592 0.925078 0.406758 0.925935 0.409139 0.927486 0.411139 0.929579 0.412561 0.932009 0.413267 0.934538 0.413187 0.937356 0.412072 0.939254 0.410398 0.940543 0.408220 0.941095 0.405751 0.940856 0.403231 0.939851 0.400909 0.938178 0.399011 0.936000 0.397723 0.933530 0.397171 0.931011 0.397409)</TD>
+            <TD />
+            <TD />
+            <TD>1</TD>
+            <TD>1</TD>
+            <TD>2</TD>
+            <TD>58.23257234376058</TD>
+            <TD>57833.6515</TD>
+            <TD>57833.701166</TD>
+            <TD>307.617</TD>
+            <TD>307.617</TD>
+            <TD>0.0028553097165265077</TD>
+            <TD>0.0028553110355943913</TD>
+            <TD>52.4972875</TD>
+            <TD>/XX/YY/</TD>
+            <TD>https://almascience.org/datalink/sync?ID=uid://A001/X8a5/X51</TD>
+            <TD>application/x-votable+xml; content=datalink</TD>
+            <TD />
+            <TD>2016.1.00788.S</TD>
+            <TD>Public</TD>
+            <TD>98.33720421641443</TD>
+            <TD>-60.17357969147571</TD>
+            <TD>3</TD>
+            <TD>3.747808734655711E12</TD>
+            <TD>2.0E9</TD>
+            <TD>T701:PM03 T703:PM04 T704:PM01</TD>
+            <TD>T</TD>
+            <TD>2018-07-28T19:14:45.000</TD>
+            <TD>52.56391485896973</TD>
+            <TD>[92.99..92.99GHz,2000000.00kHz,44.5mJy/beam@10km/s,1.8mJy/beam@native, XX YY] U [94.93..94.93GHz,2000000.00kHz,44.2mJy/beam@10km/s,1.8mJy/beam@native, XX YY] U [104.99..104.99GHz,2000000.00kHz,44.8mJy/beam@10km/s,1.9mJy/beam@native, XX YY] U [106.99..106.99GHz,2000000.00kHz,45.5mJy/beam@10km/s,1.9mJy/beam@native, XX YY]</TD>
+            <TD>104.99470058090424</TD>
+            <TD>5603881.467822083</TD>
+            <TD>ALMA</TD>
+            <TD>A Publicly Available Multiobservatory Data Set of an Enhanced Network Patch from the Photosphere to the Corona Spatio-Temporal Comparisons of the Hydrogen-Alpha Line Width and ALMA 3 mm Brightness Temperature in the Weak Solar Network Subterahertz radius and limb brightening of the Sun derived from SST and ALMA The Solar ALMA Science Archive (SALSA). First release, SALAT, and FITS header standard The Subterahertz Solar Cycle: Polar and Equatorial Radii Derived from SST and ALMA The quiet sun at mm wavelengths as seen by ALMA</TD>
+            <TD>Alissandrakis, Costas E. Henriques, Vasco M. J. Kobelski, Adam R. Menezes, Fabian Tarr, Lucas A.</TD>
+            <TD>Alissandrakis, Costas E.; Bastian, T. S.; Brajša, Roman Henriques, Vasco M. J.; Jafarzadeh, Shahin; Guevara Gómez, Juan Camilo; Eklund, Henrik; Wedemeyer, Sven; Szydlarski, Mikołaj; Haugan, Stein Vidar H.; Mohan, Atul Kobelski, Adam R.; Tarr, Lucas A.; Jaeggli, Sarah A.; Luber, Nicholas; Warren, Harry P.; Savage, Sabrina Menezes, Fabian; Selhorst, Caius L.; Giménez de Castro, Carlos Guillermo; Valio, Adriana Tarr, Lucas A.; Kobelski, Adam R.; Jaeggli, Sarah A.; Molnar, Momchil; Cauzzi, Gianna; Reardon, Kevin P.</TD>
+            <TD>At subterahertz frequencies—i.e., millimeter and submillimeter wavelengths—there is a gap in measurements of the solar radius, as well as other parameters of the solar atmosphere. As the observational wavelength changes, the radius varies because the altitude of the dominant electromagnetic radiation is produced at different heights in the solar atmosphere. Moreover, radius variations throughout long time series are indicative of changes in the solar atmosphere that may be related to the solar cycle. Therefore, the solar radius is an important parameter for the calibration of solar atmospheric models enabling a better understanding of the atmospheric structure. In this work, we use data from the Solar Submillimeter-wave Telescope (SST) and the Atacama Large Millimeter/submillimeter Array (ALMA) at frequencies of 100, 212, 230, and 405 GHz to measure the equatorial and polar radii of the Sun. The radii measured with extensive data from the SST agree with the radius-versus-frequency trend present in the literature. The radii derived from ALMA maps at 230 GHz also agree with the radius-versus-frequency trend, whereas the 100 GHz radii are slightly above the values reported by other authors. In addition, we analyze the equatorial and polar radius behavior over the years by determining the correlation coefficient between solar activity and subterahertz radius time series at 212 and 405 GHz (SST). The variations of the SST-derived radii over 13 yr are correlated to the solar activity when considering equatorial regions of the solar atmosphere and anticorrelated when considering polar regions. The ALMA-derived radius time series for 100 and 230 GHz show very similar behaviors with those of SST. ...(5)</TD>
+            <TD>2021</TD>
+            <TD>ALMA offers a truly unique insight into the Sun by providing a linear thermometer into the chromosphere. These layers of the chromosphere are largely unstudied or have been muddled by line-of-sight effects common to optically thin measurements. Here we intend to use the advantages of ALMA in order to study one of the most readily available signatures of magnetic reconnection, microflares, in the chromosphere: the region through which the energy and plasma must flow to get into the corona. By observing the statistics of microflaring in two wavelengths, we will be able to better constrain the heights and dynamics of energy transfer in the chromosphere during magnetic reconnection.</TD>
+            <TD>Sun_10_a_03_TP</TD>
+            <TD>Jaeggli, Sarah; Savage, Sabrina; Tarr, Lucas;</TD>
+            <TD>44.75813149726943</TD>
+            <TD>0.9110074566167298</TD>
+            <TD>5.186</TD>
+            <TD>uid://A001/X8a5/X4e</TD>
+            <TD>uid://A001/X8a5/X51</TD>
+            <TD>uid://A002/Xbe2ed7/X5bd1</TD>
+            <TD>Microflares in the Chromosphere with ALMA</TD>
+            <TD>S</TD>
+            <TD>TARGET</TD>
+            <TD>T</TD>
+            <TD>931.7215879275407</TD>
+            <TD>T</TD>
+            <TD>2021ApJ...910...77M 2022A&amp;A...659A..31H 2022ApJS..261...15K 2022FrASS...9.1320A 2022MNRAS.511..877M 2023FrASS...978405T</TD>
+            <TD>The Sun, Transients</TD>
+            <TD>Sun</TD>
+            <TD>2023-04-10T18:35:03.734</TD>
+          </TR>
+          <TR>
+            <TD />
+            <TD>akobelsk</TD>
+            <TD>phot.flux.density;phys.polarization</TD>
+            <TD>ADS/JAO.ALMA#2016.1.00788.S</TD>
+            <TD>ALMA</TD>
+            <TD>JAO</TD>
+            <TD>ALMA</TD>
+            <TD>uid://A001/X8a5/X51.source.Sun.spw.3</TD>
+            <TD>image</TD>
+            <TD>2</TD>
+            <TD>Sun</TD>
+            <TD>0.9122569444444446</TD>
+            <TD>0.39610194444444446</TD>
+            <TD>0.06601494766048098</TD>
+            <TD>Union ICRS ( Polygon 0.890702 0.380327 0.889078 0.377768 0.886626 0.375986 0.883182 0.375217 0.880205 0.375785 0.877645 0.377409 0.875864 0.379861 0.875110 0.382797 0.875864 0.386748 0.877645 0.389200 0.880205 0.390824 0.883182 0.391392 0.886159 0.390824 0.889078 0.388841 0.890702 0.386282 0.891270 0.383304 Polygon 0.928553 0.398506 0.927654 0.395862 0.926103 0.393863 0.924010 0.392440 0.921580 0.391735 0.919051 0.391814 0.916670 0.392671 0.914670 0.394222 0.913248 0.396315 0.912542 0.398745 0.912621 0.401274 0.913737 0.404092 0.915411 0.405990 0.917589 0.407279 0.920058 0.407831 0.922578 0.407592 0.925078 0.406758 0.925935 0.409139 0.927486 0.411139 0.929579 0.412561 0.932009 0.413267 0.934538 0.413187 0.937356 0.412072 0.939254 0.410398 0.940543 0.408220 0.941095 0.405751 0.940856 0.403231 0.939851 0.400909 0.938178 0.399011 0.936000 0.397723 0.933530 0.397171 0.931011 0.397409)</TD>
+            <TD />
+            <TD />
+            <TD>1</TD>
+            <TD>1</TD>
+            <TD>2</TD>
+            <TD>58.23257234376058</TD>
+            <TD>57833.6515</TD>
+            <TD>57833.701166</TD>
+            <TD>307.617</TD>
+            <TD>307.617</TD>
+            <TD>0.0028019367353912207</TD>
+            <TD>0.0028019380298023797</TD>
+            <TD>53.4972875</TD>
+            <TD>/XX/YY/</TD>
+            <TD>https://almascience.org/datalink/sync?ID=uid://A001/X8a5/X51</TD>
+            <TD>application/x-votable+xml; content=datalink</TD>
+            <TD />
+            <TD>2016.1.00788.S</TD>
+            <TD>Public</TD>
+            <TD>98.33720421641443</TD>
+            <TD>-60.17357969147571</TD>
+            <TD>3</TD>
+            <TD>3.747808734655711E12</TD>
+            <TD>2.0E9</TD>
+            <TD>T701:PM03 T703:PM04 T704:PM01</TD>
+            <TD>T</TD>
+            <TD>2018-07-28T19:14:45.000</TD>
+            <TD>52.56391485896973</TD>
+            <TD>[92.99..92.99GHz,2000000.00kHz,44.5mJy/beam@10km/s,1.8mJy/beam@native, XX YY] U [94.93..94.93GHz,2000000.00kHz,44.2mJy/beam@10km/s,1.8mJy/beam@native, XX YY] U [104.99..104.99GHz,2000000.00kHz,44.8mJy/beam@10km/s,1.9mJy/beam@native, XX YY] U [106.99..106.99GHz,2000000.00kHz,45.5mJy/beam@10km/s,1.9mJy/beam@native, XX YY]</TD>
+            <TD>106.99470297304507</TD>
+            <TD>5603881.467822083</TD>
+            <TD>ALMA</TD>
+            <TD>A Publicly Available Multiobservatory Data Set of an Enhanced Network Patch from the Photosphere to the Corona Spatio-Temporal Comparisons of the Hydrogen-Alpha Line Width and ALMA 3 mm Brightness Temperature in the Weak Solar Network Subterahertz radius and limb brightening of the Sun derived from SST and ALMA The Solar ALMA Science Archive (SALSA). First release, SALAT, and FITS header standard The Subterahertz Solar Cycle: Polar and Equatorial Radii Derived from SST and ALMA The quiet sun at mm wavelengths as seen by ALMA</TD>
+            <TD>Alissandrakis, Costas E. Henriques, Vasco M. J. Kobelski, Adam R. Menezes, Fabian Tarr, Lucas A.</TD>
+            <TD>Alissandrakis, Costas E.; Bastian, T. S.; Brajša, Roman Henriques, Vasco M. J.; Jafarzadeh, Shahin; Guevara Gómez, Juan Camilo; Eklund, Henrik; Wedemeyer, Sven; Szydlarski, Mikołaj; Haugan, Stein Vidar H.; Mohan, Atul Kobelski, Adam R.; Tarr, Lucas A.; Jaeggli, Sarah A.; Luber, Nicholas; Warren, Harry P.; Savage, Sabrina Menezes, Fabian; Selhorst, Caius L.; Giménez de Castro, Carlos Guillermo; Valio, Adriana Tarr, Lucas A.; Kobelski, Adam R.; Jaeggli, Sarah A.; Molnar, Momchil; Cauzzi, Gianna; Reardon, Kevin P.</TD>
+            <TD>At subterahertz frequencies—i.e., millimeter and submillimeter wavelengths—there is a gap in measurements of the solar radius, as well as other parameters of the solar atmosphere. As the observational wavelength changes, the radius varies because the altitude of the dominant electromagnetic radiation is produced at different heights in the solar atmosphere. Moreover, radius variations throughout long time series are indicative of changes in the solar atmosphere that may be related to the solar cycle. Therefore, the solar radius is an important parameter for the calibration of solar atmospheric models enabling a better understanding of the atmospheric structure. In this work, we use data from the Solar Submillimeter-wave Telescope (SST) and the Atacama Large Millimeter/submillimeter Array (ALMA) at frequencies of 100, 212, 230, and 405 GHz to measure the equatorial and polar radii of the Sun. The radii measured with extensive data from the SST agree with the radius-versus-frequency trend present in the literature. The radii derived from ALMA maps at 230 GHz also agree with the radius-versus-frequency trend, whereas the 100 GHz radii are slightly above the values reported by other authors. In addition, we analyze the equatorial and polar radius behavior over the years by determining the correlation coefficient between solar activity and subterahertz radius time series at 212 and 405 GHz (SST). The variations of the SST-derived radii over 13 yr are correlated to the solar activity when considering equatorial regions of the solar atmosphere and anticorrelated when considering polar regions. The ALMA-derived radius time series for 100 and 230 GHz show very similar behaviors with those of SST. ...(5)</TD>
+            <TD>2021</TD>
+            <TD>ALMA offers a truly unique insight into the Sun by providing a linear thermometer into the chromosphere. These layers of the chromosphere are largely unstudied or have been muddled by line-of-sight effects common to optically thin measurements. Here we intend to use the advantages of ALMA in order to study one of the most readily available signatures of magnetic reconnection, microflares, in the chromosphere: the region through which the energy and plasma must flow to get into the corona. By observing the statistics of microflaring in two wavelengths, we will be able to better constrain the heights and dynamics of energy transfer in the chromosphere during magnetic reconnection.</TD>
+            <TD>Sun_10_a_03_TP</TD>
+            <TD>Jaeggli, Sarah; Savage, Sabrina; Tarr, Lucas;</TD>
+            <TD>45.47261722945809</TD>
+            <TD>0.9110074566167298</TD>
+            <TD>5.186</TD>
+            <TD>uid://A001/X8a5/X4e</TD>
+            <TD>uid://A001/X8a5/X51</TD>
+            <TD>uid://A002/Xbe2ed7/X5bd1</TD>
+            <TD>Microflares in the Chromosphere with ALMA</TD>
+            <TD>S</TD>
+            <TD>TARGET</TD>
+            <TD>T</TD>
+            <TD>931.7215879275407</TD>
+            <TD>T</TD>
+            <TD>2021ApJ...910...77M 2022A&amp;A...659A..31H 2022ApJS..261...15K 2022FrASS...9.1320A 2022MNRAS.511..877M 2023FrASS...978405T</TD>
+            <TD>The Sun, Transients</TD>
+            <TD>Sun</TD>
+            <TD>2023-04-10T18:35:03.734</TD>
+          </TR>
+        </TABLEDATA>
+      </DATA>
+    </TABLE>
+    <INFO name="placeholder" value="ignore" />
+  </RESOURCE>
+</VOTABLE>
