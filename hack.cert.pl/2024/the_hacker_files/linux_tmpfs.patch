@@ -1,0 +1,104 @@
+diff --git a/volatility/dwarf.py b/volatility/dwarf.py
+index 8e0fb2ce..1b2ceb19 100644
+--- a/volatility/dwarf.py
++++ b/volatility/dwarf.py
+@@ -50,6 +50,7 @@ class DWARFParser(object):
+         'unsigned int': 'unsigned int',
+         'sizetype' : 'unsigned long',
+         'ssizetype' : 'long',
++        '__int128': 'long long',
+         '__int128 unsigned': 'unsigned long long',
+     }
+ 
+diff --git a/volatility/plugins/linux/tmpfs.py b/volatility/plugins/linux/tmpfs.py
+index 5f2ba0f4..b79b6654 100644
+--- a/volatility/plugins/linux/tmpfs.py
++++ b/volatility/plugins/linux/tmpfs.py
+@@ -29,6 +29,7 @@ import volatility.debug as debug
+ import volatility.plugins.linux.common as linux_common
+ import volatility.plugins.linux.mount  as linux_mount
+ import volatility.plugins.linux.find_file as linux_find_file
++import volatility.obj as obj
+ 
+ class linux_tmpfs(linux_common.AbstractLinuxCommand):
+     '''Recovers tmpfs filesystems from memory'''
+@@ -47,8 +48,10 @@ class linux_tmpfs(linux_common.AbstractLinuxCommand):
+     def fix_md(self, new_file, perms, atime, mtime, isdir = 0):
+         """Fix metadata for new files"""
+ 
+-        atime = atime.as_timestamp().v()
+-        mtime = mtime.as_timestamp().v()
++        # atime = atime.as_timestamp().v()
++        atime = 1719689467
++        # mtime = mtime.as_timestamp().v()
++        mtime = 1719689467
+ 
+         if isdir:
+             self.dir_times[new_file] = (atime, mtime)
+@@ -57,15 +60,36 @@ class linux_tmpfs(linux_common.AbstractLinuxCommand):
+ 
+         os.chmod(new_file, perms)
+ 
+-    def process_directory(self, dentry, _recursive = 0, parent = ""):
++    def __walk_hlist_node(self, node):
++        seen = set()
++
++        offset = self.addr_space.profile.get_obj_offset("dentry", "d_sib")
++        if node.v() == 0 or not node.next.is_valid():
++            return
++
++        nxt = node.next.dereference()
++
++        while nxt.is_valid() and nxt.obj_offset not in seen:
++            item = obj.Object("dentry", offset = nxt.v() - offset, vm = self.addr_space)
++            print("x", str(item.d_name.name.dereference_as("String", length=255)))
++            print("x", item.d_inode.__i_atime)
++
++            seen.add(nxt.obj_offset)
+ 
+-        for dentry in dentry.d_subdirs.list_of_type("dentry", "d_u"):
++            yield item
++
++            nxt = nxt.next.dereference()
++
++
++    def process_directory(self, dentry, _recursive = 0, parent = ""):
++        for dentry in self.__walk_hlist_node(dentry.d_children.first): # dentry.d_children.first.list_of_type("dentry", "d_u"):
+             name = dentry.d_name.name.dereference_as("String", length = 255)
+             inode = dentry.d_inode
++            print(name)
+ 
+             if inode:
+                 new_file = os.path.join(parent, str(name))
+-                (perms, atime, mtime) = (inode.i_mode, inode.i_atime, inode.i_mtime)
++                (perms, atime, mtime) = (inode.i_mode, inode.__i_atime, inode.__i_mtime)
+ 
+                 if inode.is_dir():
+                     # since the directory may already exist
+diff --git a/volatility/plugins/overlays/linux/linux.py b/volatility/plugins/overlays/linux/linux.py
+index d0df4ecc..9a13bec6 100644
+--- a/volatility/plugins/overlays/linux/linux.py
++++ b/volatility/plugins/overlays/linux/linux.py
+@@ -1917,7 +1917,7 @@ class task_struct(obj.CType):
+         if not self.mm or self.get_process_address_space() == None:
+             return
+         seen = {}
+-        for vma in linux_common.walk_internal_list("vm_area_struct", "vm_next", self.mm.mmap):
++        for vma in linux_common.walk_internal_list("vm_area_struct", "vm_next", self.mm.mmap_base):
+             val = vma.v()
+             if val in seen:
+                 break
+@@ -2364,7 +2364,12 @@ class VolatilityDTB(obj.VolatilityMagic):
+        
+         comm_offset   = profile.get_obj_offset("task_struct", "comm")
+         pid_offset    = profile.get_obj_offset("task_struct", "pid")
+-        state_offset  = profile.get_obj_offset("task_struct", "state")
++        try:
++            # For Linux kernels < v5.14-rc1
++            state_offset  = profile.get_obj_offset("task_struct", "state")
++        except KeyError:
++            # For Linux kernels >= v5.14-rc1, based on commit 2f064a59a11ff9bc22e52e9678bc601404c7cb34
++            state_offset  = profile.get_obj_offset("task_struct", "__state")
+         files_offset  = profile.get_obj_offset("task_struct", "files") 
+         mm_offset     = profile.get_obj_offset("task_struct", "active_mm")
+         
